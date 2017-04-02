@@ -43,6 +43,7 @@ public class GameManager : Singleton<GameManager> {
 
 	public int enemiesPerSpawn;
 	public List<Enemy> EnemyList = new List<Enemy>();
+	public List<Projectile> ProjectileList = new List<Projectile>();
 	const float spawnDelay = 0.8f;
 
 	public int TotalEscaped {
@@ -133,6 +134,25 @@ public class GameManager : Singleton<GameManager> {
 		EnemyList.Clear();
 	}
 
+	public void RegiserProjectile(Projectile projectile) {
+		ProjectileList.Add(projectile);
+	}
+
+	public void UnRegisterProjectile(Projectile projectile) {
+		ProjectileList.Remove(projectile);
+		if(projectile != null) {
+			Destroy(projectile.gameObject);
+		}
+	}
+
+	public void DestroyAllProjectiles() {
+		foreach(Projectile projectile in ProjectileList) {
+			Destroy(projectile.gameObject);
+		}
+	}
+
+	
+
 	public void addMoney(int amount) {
 		TotalMoney += amount;
 	}
@@ -206,6 +226,7 @@ public class GameManager : Singleton<GameManager> {
 				break;	
 		}
 		DestroyAllEnemies();
+		DestroyAllProjectiles();
 		TotalKilled = 0;
 		RoundEscaped = 0;
 		currentWaveLbl.text = "Wave " + (waveNumber +1);

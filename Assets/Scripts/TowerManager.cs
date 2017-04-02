@@ -54,17 +54,19 @@ public TowerBtn towerBtnPressed{get; set;}
 	public void placeTower(RaycastHit2D hit) {
 		if(!EventSystem.current.IsPointerOverGameObject() && towerBtnPressed != null) {
 			if(hit.collider.tag == "BuildSite") {
-				//Needed to explictly cast using (Tower) or us as Tower
-				Tower newTower = Instantiate (towerBtnPressed.TowerObject) as Tower;
-				newTower.transform.position = hit.transform.position;
-				buyTower(towerBtnPressed.TowerPrice);
-				GameManager.Instance.AudioSource.PlayOneShot(SoundManager.Instance.TowerBuilt);
-				RegisterTower(newTower);
-				disableDragSprite();
-				// Rename tag to prevent multiple towers being built on one build site
-				buildTile = hit.collider;
-				buildTile.tag = "BuildSiteFull";
-				RegisterBuildSite(buildTile);
+				if(towerBtnPressed.TowerPrice <= GameManager.Instance.TotalMoney) {
+					//Needed to explictly cast using (Tower) or us as Tower
+					Tower newTower = Instantiate (towerBtnPressed.TowerObject) as Tower;
+					newTower.transform.position = hit.transform.position;
+					buyTower(towerBtnPressed.TowerPrice);
+					GameManager.Instance.AudioSource.PlayOneShot(SoundManager.Instance.TowerBuilt);
+					RegisterTower(newTower);
+					disableDragSprite();
+					// Rename tag to prevent multiple towers being built on one build site
+					buildTile = hit.collider;
+					buildTile.tag = "BuildSiteFull";
+					RegisterBuildSite(buildTile);
+				}
 			}
 		}
 	}

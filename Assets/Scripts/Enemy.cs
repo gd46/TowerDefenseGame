@@ -60,7 +60,7 @@ public class Enemy : MonoBehaviour {
 		} else if(other.tag == "Projectile") {
 			Projectile newP = other.gameObject.GetComponent<Projectile>();
 			enemyHit(newP.AttackStrength);
-			Destroy(other.gameObject);
+			GameManager.Instance.UnRegisterProjectile(newP);
 		}
 	}
 

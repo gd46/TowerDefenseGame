@@ -50,6 +50,7 @@ public class Tower : MonoBehaviour {
 	public void Attack () {
 		isAttacking = false;
 		Projectile newProjectile = Instantiate(projectile) as Projectile;
+		GameManager.Instance.RegiserProjectile(newProjectile);
 		newProjectile.transform.localPosition = transform.localPosition;
 		if(newProjectile.ProjectileType == proType.arrow) {
 			GameManager.Instance.AudioSource.PlayOneShot(SoundManager.Instance.Arrow);
@@ -59,7 +60,7 @@ public class Tower : MonoBehaviour {
 			GameManager.Instance.AudioSource.PlayOneShot(SoundManager.Instance.Rock);
 		}
 		if(targetEnemy == null) {
-			Destroy(newProjectile);
+			GameManager.Instance.UnRegisterProjectile(newProjectile);
 		} else {
 			StartCoroutine(MoveProjectile(newProjectile));
 		}
@@ -74,7 +75,7 @@ public class Tower : MonoBehaviour {
 			yield return null;
 		}
 		if(projectile != null || targetEnemy == null) {
-			Destroy(projectile);
+			GameManager.Instance.UnRegisterProjectile(projectile);
 		}
 	}
 
