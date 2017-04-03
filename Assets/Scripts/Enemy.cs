@@ -7,7 +7,7 @@ public class Enemy : MonoBehaviour {
 	[SerializeField]
 	private Transform[] wayPoints;
 	[SerializeField]
-	private float navigationUpdate;
+	private float movementSpeed;
 	[SerializeField]
 	private int healthPoints;
 	[SerializeField]
@@ -17,7 +17,6 @@ public class Enemy : MonoBehaviour {
 	private Transform enemy;
 	private Collider2D enemyCollider;
 	private Animator anim;
-	private float navigationTime = 0;
 	private bool isDead = false;
 	
 	public bool IsDead {
@@ -37,15 +36,11 @@ public class Enemy : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if(wayPoints != null  && !isDead) {
-			navigationTime += Time.deltaTime;
-			if(navigationTime > navigationUpdate ) {
-				if(target < wayPoints.Length) {
-					enemy.position = Vector2.MoveTowards(enemy.position, wayPoints[target].position, navigationTime);
+			if(target < wayPoints.Length) {
+					enemy.position = Vector2.MoveTowards(enemy.position, wayPoints[target].position, movementSpeed * Time.deltaTime);
 				} else {
-					enemy.position = Vector2.MoveTowards(enemy.position, exitPoint.position, navigationTime);
+					enemy.position = Vector2.MoveTowards(enemy.position, exitPoint.position, movementSpeed * Time.deltaTime);
 				}
-				navigationTime = 0;
-			}
 		}
 	}
 

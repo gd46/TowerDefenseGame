@@ -31,7 +31,7 @@ public class GameManager : Singleton<GameManager> {
 	[SerializeField]
 	private Text gameOverBannerLbl;
 
-	private int waveNumber = 0;
+	private int waveNumber = 1;
 	private int totalMoney = 10;
 	private int totalEscaped = 0;
 	private int roundEscaped = 0;
@@ -229,7 +229,7 @@ public class GameManager : Singleton<GameManager> {
 		DestroyAllProjectiles();
 		TotalKilled = 0;
 		RoundEscaped = 0;
-		currentWaveLbl.text = "Wave " + (waveNumber +1);
+		currentWaveLbl.text = "Wave " + waveNumber;
 		StartCoroutine(spawn());
 		playBtn.gameObject.SetActive(false);
 		gameOverBanner.gameObject.SetActive(false);
