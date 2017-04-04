@@ -7,7 +7,6 @@ public class TowerManager : Singleton<TowerManager> {
 public TowerBtn towerBtnPressed{get; set;}
 	private SpriteRenderer spriteRenderer;
 	private List<Tower> TowerList = new List<Tower>();
-	private List<Collider2D> BuildList = new List<Collider2D>();
 	private Collider2D buildTile;
 
 	// Use this for initialization
@@ -29,19 +28,8 @@ public TowerBtn towerBtnPressed{get; set;}
 		}
 	}
 
-	public void RegisterBuildSite(Collider2D buildTag) {
-		BuildList.Add(buildTag);
-	}
-
 	public void RegisterTower(Tower tower) {
 		TowerList.Add(tower);
-	}
-
-	public void RenameTagBuildSites() {
-		foreach(Collider2D buildTag in BuildList) {
-			buildTag.tag = "BuildSite";
-		}
-		BuildList.Clear();
 	}
 
 	public void DestroyAllTowers() {
@@ -64,8 +52,7 @@ public TowerBtn towerBtnPressed{get; set;}
 					disableDragSprite();
 					// Rename tag to prevent multiple towers being built on one build site
 					buildTile = hit.collider;
-					buildTile.tag = "BuildSiteFull";
-					RegisterBuildSite(buildTile);
+					BuildSiteManager.Instance.RegisterBuildSite(buildTile);
 				}
 			}
 		}
@@ -80,7 +67,6 @@ public TowerBtn towerBtnPressed{get; set;}
 			towerBtnPressed = towerSelected;
 			enableDragSprite(towerBtnPressed.DragSprite);
 		} else {
-			towerBtnPressed = null;
 			disableDragSprite();
 		}
 	}
@@ -97,5 +83,6 @@ public TowerBtn towerBtnPressed{get; set;}
 
 	public void disableDragSprite () {
 		spriteRenderer.enabled = false;
+		towerBtnPressed = null;
 	}
 }

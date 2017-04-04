@@ -219,7 +219,7 @@ public class GameManager : Singleton<GameManager> {
 				TotalMoney = 10;
 				enemiesToSpawn = 0;
 				TowerManager.Instance.DestroyAllTowers();
-				TowerManager.Instance.RenameTagBuildSites();
+				BuildSiteManager.Instance.RenameTagBuildSites();
 				totalMoneyLbl.text = TotalMoney.ToString();
 				totalEscapedLbl.text = "Escaped " + totalEscaped + "/10";
 				audioSource.PlayOneShot(SoundManager.Instance.NewGame);
