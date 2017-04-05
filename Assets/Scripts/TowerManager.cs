@@ -42,11 +42,11 @@ public TowerBtn towerBtnPressed{get; set;}
 	private void placeTower(RaycastHit2D hit) {
 		if(!EventSystem.current.IsPointerOverGameObject() && towerBtnPressed != null) {
 			if(hit.collider.tag == "BuildSite") {
-				if(towerBtnPressed.TowerPrice <= GameManager.Instance.TotalMoney) {
+				if(towerBtnPressed.Price <= GameManager.Instance.TotalMoney) {
 					//Needed to explictly cast using (Tower) or us as Tower
 					Tower newTower = Instantiate (towerBtnPressed.TowerObject) as Tower;
 					newTower.transform.position = hit.transform.position;
-					buyTower(towerBtnPressed.TowerPrice);
+					buyTower(towerBtnPressed.Price);
 					GameManager.Instance.AudioSource.PlayOneShot(SoundManager.Instance.TowerBuilt);
 					RegisterTower(newTower);
 					disableDragSprite();
@@ -63,7 +63,7 @@ public TowerBtn towerBtnPressed{get; set;}
 	}
 
 	public void selectedTower (TowerBtn towerSelected) {
-		if(towerSelected.TowerPrice <= GameManager.Instance.TotalMoney) {
+		if(towerSelected.Price <= GameManager.Instance.TotalMoney) {
 			towerBtnPressed = towerSelected;
 			SpriteRenderManager.Instance.enableDragSprite(towerBtnPressed.DragSprite);
 		} else {

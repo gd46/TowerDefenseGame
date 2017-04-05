@@ -1,30 +1,13 @@
 ﻿using UnityEngine;
 
-public class TowerBtn : MonoBehaviour {
+public class TowerBtn : GamePieceBtn {
 
 	[SerializeField]
 	private Tower towerObject;
-	[SerializeField]
-	private Sprite dragSprite;
-	[SerializeField]
-	private int towerPrice;
-
+	
 	public Tower TowerObject {
 		get {
 			return towerObject;
 		}
 	}
-
-	public Sprite DragSprite {
-		get {
-			return dragSprite;
-		}
-	}
-
-	public int TowerPrice {
-		get {
-			return towerPrice;
-		}
-	}
-
 }
