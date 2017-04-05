@@ -28,7 +28,7 @@ public TowerBtn towerBtnPressed{get; set;}
 		}
 	}
 
-	public void RegisterTower(Tower tower) {
+	private void RegisterTower(Tower tower) {
 		TowerList.Add(tower);
 	}
 
@@ -39,7 +39,7 @@ public TowerBtn towerBtnPressed{get; set;}
 		TowerList.Clear();
 	}
 
-	public void placeTower(RaycastHit2D hit) {
+	private void placeTower(RaycastHit2D hit) {
 		if(!EventSystem.current.IsPointerOverGameObject() && towerBtnPressed != null) {
 			if(hit.collider.tag == "BuildSite") {
 				if(towerBtnPressed.TowerPrice <= GameManager.Instance.TotalMoney) {
@@ -58,7 +58,7 @@ public TowerBtn towerBtnPressed{get; set;}
 		}
 	}
 
-	public void buyTower(int price) {
+	private void buyTower(int price) {
 		GameManager.Instance.subtractMoney(price);
 	}
 
