@@ -237,7 +237,7 @@ public class GameManager : Singleton<GameManager> {
 
 	private void handleEscape() {
 		if(Input.GetKeyDown(KeyCode.Escape)) {
-			TowerManager.Instance.disableDragSprite();
+			SpriteRenderManager.Instance.disableDragSprite();
 			TowerManager.Instance.towerBtnPressed = null;
 		}
 	}

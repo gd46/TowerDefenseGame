@@ -24,7 +24,7 @@ public TowerBtn towerBtnPressed{get; set;}
 			placeTower(hit);
 		}
 		if(spriteRenderer.enabled) {
-			followMouse();
+			SpriteRenderManager.Instance.followMouse();
 		}
 	}
 
@@ -65,24 +65,14 @@ public TowerBtn towerBtnPressed{get; set;}
 	public void selectedTower (TowerBtn towerSelected) {
 		if(towerSelected.TowerPrice <= GameManager.Instance.TotalMoney) {
 			towerBtnPressed = towerSelected;
-			enableDragSprite(towerBtnPressed.DragSprite);
+			SpriteRenderManager.Instance.enableDragSprite(towerBtnPressed.DragSprite);
 		} else {
 			disableDragSprite();
 		}
 	}
 
-	public void followMouse () {
-		transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-		transform.position = new Vector2(transform.position.x, transform.position.y);
-	}
-
-	public void enableDragSprite (Sprite sprite) {
-		spriteRenderer.enabled = true;
-		spriteRenderer.sprite = sprite;
-	}
-
-	public void disableDragSprite () {
-		spriteRenderer.enabled = false;
+	private void disableDragSprite() {
+		SpriteRenderManager.Instance.disableDragSprite();
 		towerBtnPressed = null;
 	}
 }

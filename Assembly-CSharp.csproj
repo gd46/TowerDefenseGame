@@ -51,6 +51,7 @@
      <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\Singleton.cs" />
      <Compile Include="Assets\Scripts\SoundManager.cs" />
+     <Compile Include="Assets\Scripts\SpriteRenderManager.cs" />
      <Compile Include="Assets\Scripts\Tower\Projectile.cs" />
      <Compile Include="Assets\Scripts\Tower\Tower.cs" />
      <Compile Include="Assets\Scripts\Tower\TowerBtn.cs" />
