@@ -7,7 +7,7 @@ public class BuildSiteManager : Singleton<BuildSiteManager> {
 
 	public BuildSiteBtn buildSiteBtnPressed{get; set;}
 	private SpriteRenderer spriteRenderer;
-	private List<Collider2D> BuildList = new List<Collider2D>();
+	private List<Collider2D> BuildColliderList = new List<Collider2D>();
 
 	void Start () {
 		spriteRenderer = GetComponent<SpriteRenderer>();
@@ -70,13 +70,13 @@ public class BuildSiteManager : Singleton<BuildSiteManager> {
 	// Update is called once per frame
 	public void RegisterBuildSite(Collider2D buildTag) {
 		buildTag.tag = "BuildSiteFull";
-		BuildList.Add(buildTag);
+		BuildColliderList.Add(buildTag);
 	}
 
 	public void RenameTagBuildSites() {
-		foreach(Collider2D buildTag in BuildList) {
+		foreach(Collider2D buildTag in BuildColliderList) {
 			buildTag.tag = "BuildSite";
 		}
-		BuildList.Clear();
+		BuildColliderList.Clear();
 	}
 }
