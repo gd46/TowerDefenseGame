@@ -42,7 +42,6 @@ public class BuildSiteManager : Singleton<BuildSiteManager> {
 					buildSite.transform.position = hit.transform.position;
 					buyBuildSite(buildSiteBtnPressed.Price);
 					GameManager.Instance.AudioSource.PlayOneShot(SoundManager.Instance.TowerBuilt);
-					RegisterBuildSite(hit.collider);
 					disableDragSprite();
 				}
 			}
