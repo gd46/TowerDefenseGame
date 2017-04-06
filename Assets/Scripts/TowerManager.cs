@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class TowerManager : Singleton<TowerManager> {
 
-public TowerBtn towerBtnPressed{get; set;}
+	public TowerBtn towerBtnPressed{get; set;}
 	private SpriteRenderer spriteRenderer;
 	private List<Tower> TowerList = new List<Tower>();
 	private Collider2D buildTile;

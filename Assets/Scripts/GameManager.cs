@@ -239,6 +239,7 @@ public class GameManager : Singleton<GameManager> {
 		if(Input.GetKeyDown(KeyCode.Escape)) {
 			SpriteRenderManager.Instance.disableDragSprite();
 			TowerManager.Instance.towerBtnPressed = null;
+			BuildSiteManager.Instance.buildSiteBtnPressed = null;
 		}
 	}
 }
