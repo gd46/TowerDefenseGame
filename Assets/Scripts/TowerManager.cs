@@ -26,6 +26,14 @@ public class TowerManager : Singleton<TowerManager> {
 		if(spriteRenderer.enabled) {
 			SpriteRenderManager.Instance.followMouse();
 		}
+		if(Input.GetKeyDown(KeyCode.Escape)) {
+			handleEscape();
+		}
+	}
+
+	private void handleEscape() {
+		SpriteRenderManager.Instance.disableDragSprite();
+		towerBtnPressed = null;
 	}
 
 	private void RegisterTower(Tower tower) {

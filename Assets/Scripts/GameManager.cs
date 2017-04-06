@@ -99,10 +99,6 @@ public class GameManager : Singleton<GameManager> {
 		audioSource = GetComponent<AudioSource>();
 		showMenu();
 	}
-
-	void Update() {
-		handleEscape();
-	}
 	
 	IEnumerator spawn () {
 		if(enemiesPerSpawn > 0 && EnemyList.Count < totalEnemies) {
@@ -233,13 +229,5 @@ public class GameManager : Singleton<GameManager> {
 		StartCoroutine(spawn());
 		playBtn.gameObject.SetActive(false);
 		gameOverBanner.gameObject.SetActive(false);
-	}
-
-	private void handleEscape() {
-		if(Input.GetKeyDown(KeyCode.Escape)) {
-			SpriteRenderManager.Instance.disableDragSprite();
-			TowerManager.Instance.towerBtnPressed = null;
-			BuildSiteManager.Instance.buildSiteBtnPressed = null;
-		}
 	}
 }

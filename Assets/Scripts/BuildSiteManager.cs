@@ -23,6 +23,15 @@ public class BuildSiteManager : Singleton<BuildSiteManager> {
 		if(spriteRenderer.enabled) {
 			SpriteRenderManager.Instance.followMouse();
 		}
+
+		if(Input.GetKeyDown(KeyCode.Escape)) {
+			handleEscape();
+		}
+	}
+
+	private void handleEscape() {
+		SpriteRenderManager.Instance.disableDragSprite();
+		buildSiteBtnPressed = null;
 	}
 
 	private void placeBuildSite(RaycastHit2D hit) {
