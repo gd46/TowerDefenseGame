@@ -60,7 +60,7 @@ public class TowerManager : Singleton<TowerManager> {
 					disableDragSprite();
 					// Rename tag to prevent multiple towers being built on one build site
 					buildTile = hit.collider;
-					BuildSiteManager.Instance.RegisterBuildSite(buildTile);
+					BuildSiteManager.Instance.RenameTagBuildSiteFull(buildTile);
 				}
 			}
 		}

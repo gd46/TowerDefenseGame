@@ -67,7 +67,7 @@ public class BuildSiteManager : Singleton<BuildSiteManager> {
 	}
 
 	// Update is called once per frame
-	public void RegisterBuildSite(Collider2D buildTag) {
+	public void RenameTagBuildSiteFull(Collider2D buildTag) {
 		buildTag.tag = "BuildSiteFull";
 		BuildColliderList.Add(buildTag);
 	}
