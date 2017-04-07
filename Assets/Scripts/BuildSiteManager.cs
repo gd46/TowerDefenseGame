@@ -9,6 +9,8 @@ public class BuildSiteManager : Singleton<BuildSiteManager> {
 	private SpriteRenderer spriteRenderer;
 	private List<Collider2D> BuildColliderList = new List<Collider2D>();
 
+	private List<GameObject> BuildSiteList = new List<GameObject>();
+
 	void Start () {
 		spriteRenderer = GetComponent<SpriteRenderer>();
 	}
@@ -41,6 +43,7 @@ public class BuildSiteManager : Singleton<BuildSiteManager> {
 					GameObject buildSite = Instantiate (buildSiteBtnPressed.BuildSiteObject) as GameObject;
 					buildSite.transform.position = hit.transform.position;
 					buyBuildSite(buildSiteBtnPressed.Price);
+					RegisterBuildSite(buildSite);
 					GameManager.Instance.AudioSource.PlayOneShot(SoundManager.Instance.TowerBuilt);
 					disableDragSprite();
 				}
@@ -70,6 +73,17 @@ public class BuildSiteManager : Singleton<BuildSiteManager> {
 	public void RenameTagBuildSiteFull(Collider2D buildTag) {
 		buildTag.tag = "BuildSiteFull";
 		BuildColliderList.Add(buildTag);
+	}
+
+	public void RegisterBuildSite(GameObject buildSite) {
+		BuildSiteList.Add(buildSite);
+	}
+
+	public void DestroyAllAddedBuildSites() {
+		foreach(GameObject buildSite in BuildSiteList) {
+			Destroy(buildSite.gameObject);
+		}
+		BuildSiteList.Clear();
 	}
 
 	public void RenameTagBuildSites() {

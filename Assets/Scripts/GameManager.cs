@@ -215,6 +215,7 @@ public class GameManager : Singleton<GameManager> {
 				TotalMoney = 10;
 				enemiesToSpawn = 0;
 				TowerManager.Instance.DestroyAllTowers();
+				BuildSiteManager.Instance.DestroyAllAddedBuildSites();
 				BuildSiteManager.Instance.RenameTagBuildSites();
 				totalMoneyLbl.text = TotalMoney.ToString();
 				totalEscapedLbl.text = "Escaped " + totalEscaped + "/10";
