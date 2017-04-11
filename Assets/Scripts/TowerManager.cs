@@ -14,7 +14,7 @@ public class TowerManager : Singleton<TowerManager> {
 		spriteRenderer = GetComponent<SpriteRenderer>();
 		buildTile = GetComponent<Collider2D>();
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 		// 0 left mouse press 1 right

@@ -14,12 +14,6 @@ public class Tower : MonoBehaviour {
 	private float attackCounter;
 	private bool isAttacking = false;
 
-
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
 	// Update is called once per frame
 	void Update () {
 		attackCounter -= Time.deltaTime;
